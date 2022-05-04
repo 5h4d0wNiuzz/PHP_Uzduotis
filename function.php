@@ -110,11 +110,12 @@
     }
     function downlode_xml($file_name, $data)
     {
+        $xml = simplexml_load_file($file_name)
         header("Content-Description: File Transfer"); 
         header("Content-Type: text/xml"); 
         header("Content-Disposition: attachment; filename=$file_name"); 
         
-        echo $data;
+        echo $xml;
         
     }
 ?>
