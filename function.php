@@ -110,25 +110,12 @@
     }
     function downlode_xml($file_name, $data)
     {
-        $xml = simplexml_load_file("downlode.xml");
         header("Content-Description: File Transfer"); 
-        header("Content-Type: application/xml"); 
-        header("Content-Disposition: attachment; filename=downlode.xml"); 
+        header("Content-Type: text/xml"); 
+        header("Content-Disposition: attachment; filename=$file_name"); 
         
-        $rootNode = $xml->appendChild($xml->createElement("items"));
-
-        foreach ($data as $per) {
-            if (! empty($per)) {
-                $itemNode = $rootNode->appendChild($xml->createElement('item'));
-                foreach ($per as $k => $v) {
-                    $itemNode->appendChild($xml->createElement($k, $v));
-                }
-            }
-        }
-        $xml->formatOutput = true;
-
-        $xml->save($file_name);
-        echo $xml;
+        echo $data;
+        
     }
 ?>
 
