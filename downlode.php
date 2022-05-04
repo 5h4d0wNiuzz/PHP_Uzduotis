@@ -23,52 +23,27 @@
     # Gets file type from index.php
     $file_type = $_POST["type"];
     # Tests if file type is csv
+    include "function.php";
     if($file_type == "csv"){
         # Downlodes csv file
         $file_name = "downlode.csv";
-        header("Content-type: text/csv");
-        header("Content-Disposition: attachment; filename=$file_name");
-        $output = fopen("php://output", "w");
-        $header = array_keys($data[0]);
-        fputcsv($output, $header);
-        foreach($data as $row){
-            fputcsv($output, $row);
-        }
-        fclose($output);
+        writing_csv($file_name, $emp, $data);
+        downlode_csv($file_name);
     }
     # Tests if file type is xml
     elseif($file_type == "xml"){
         # Downlodes xml file
-        $xml = new DOMDocument();
-        $xml_file_name = "downlode.xml";        
-            $rootNode = $xml->appendChild($xml->createElement("items"));
-
-        foreach ($data as $per) {
-            if (! empty($per)) {
-                $itemNode = $rootNode->appendChild($xml->createElement('item'));
-                foreach ($per as $k => $v) {
-                    $itemNode->appendChild($xml->createElement($k, $v));
-                }
-            }
-        }
-        $xml->formatOutput = true;
-        $xml->save($xml_file_name);
-        header("Content-type: text/xml");
-        header("Content-Disposition: attachment; filename=$xml_file_name");
-        readfile($xml);
-        exit();
+        $file_name = "downlode.xml";        
+        writing_xml($file_name, $data);
+        downlode_xml($file_name, $data);
     }
     # Tests if file type is json
     elseif($file_type == "json"){
         # Downlodes json file
-        $json = json_encode($data);
-        header('Content-type: application/json');
-        header('Content-disposition: attachment; filename=downlode.json');
-        echo $json;
+        downlode_json($data);
     }
     # File type not found
     else{
         echo "error";
     }
 ?>
-

@@ -26,60 +26,23 @@
     # Gets file name extencion
     $part = pathinfo($file_name);
     # Cheks if extencion is csv
+    include "function.php";
     if($part['extension'] == "csv"){
         # Opens file and puts content from array
-        $file = fopen($file_name, "a");
-        fputcsv($file, $emp);
-        foreach($data as $fields){
-            fputcsv($file, $fields);
-        }
-        fclose($file);
-        # Displays it's content
-        $filew = fopen($file_name, "r");
-        while(list($first_name,$age,$gender) = fgetcsv($filew,1024,',')){
-            printf("<p>%s , %s , %s</p>",$first_name,$age,$gender);
-        }
-        
-        fclose($filew);
+        writing_csv($file_name, $emp, $data);
+        reading_csv($file_name);
     }
     # Cheks if extencion is json
     elseif ($part['extension'] == "json"){
         # Encodes data form array
-        $json = json_encode(array("data" => $data));
-        if(file_put_contents($file_name, $json)){
-            echo "JSON file created succssesfully...<br>";
-        }else{
-            echo "Oops! Error creating json file...";
-        }
-        # Displays it's content
-        echo $json;
+        writing_json($file_name, $data);
+        #reading_json($file_name);
             }
     # Cheks if extencion is xml
     elseif ($part['extension'] == "xml"){
         # Creates new document and puts data from array
-        $xml = new DOMDocument();
-        
-        $rootNode = $xml->appendChild($xml->createElement("items"));
-
-        foreach ($data as $per) {
-            if (! empty($per)) {
-                $itemNode = $rootNode->appendChild($xml->createElement('item'));
-                foreach ($per as $k => $v) {
-                    $itemNode->appendChild($xml->createElement($k, $v));
-                }
-            }
-        }
-
-        $xml->formatOutput = true;
-
-        $xml->save($file_name);
-        # Displays it's content
-            $file = simplexml_load_file($file_name) or die("Failed to load");
-        foreach($file->children() as $per){
-            echo $per->first_name . ", ";
-            echo $per->age . ", ";
-            echo $per->gender . "<br>";
-        }
+        writing_xml($file_name, $data);
+        reading_xml($file_name);
     }
     # Cheks if File name doesn't contais extension
     elseif($part['extension'] == null){
