@@ -121,7 +121,8 @@
         $xml = file_get_contents($file_name);
 
         header("Content-Type: text/xml"); 
-        header("Content-Disposition: attachment; filename=$file_name");
+        header("Content-Disposition: attachment; filename=".basename($file_name));
+        header('Content-Length: ' . filesize($file_name));
         echo "<?xml version='1.0' encoding='utf-8'?>"; 
         
         print $xml;
