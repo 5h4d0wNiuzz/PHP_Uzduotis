@@ -1,13 +1,15 @@
 <?php
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
-
+    
+    #Test Function
     function foo()
     {
         echo "Its working";
+        ini_set('display_errors', 1);
+        ini_set('display_startup_errors', 1);
+        error_reporting(E_ALL);
     }
 
+    #Functions for reading files
     function reading_csv($file_name)
     {
         # Opens selected file ir read only
@@ -34,7 +36,7 @@
             }
         }
     }   
-
+    
     function reading_xml($file_name)
     {
         # Lodes file
@@ -46,6 +48,8 @@
             echo $per->gender . "<br>";
         }
     }
+
+    #Functions for writing files
     function writing_csv($file_name, $emp, $data)
     {
         $file = fopen($file_name, "w");
@@ -86,6 +90,8 @@
 
         $xml->save($file_name);
     }
+
+    #Functions for downloding files
     function downlode_csv($file_name)
     {
         header('Content-Description: File Transfer');
@@ -101,6 +107,7 @@
 
         readfile($file_name);
     }
+
     function downlode_json($data)
     {
         $json = json_encode($data);
@@ -108,6 +115,7 @@
         header('Content-disposition: attachment; filename=downlode.json');
         echo $json;
     }
+    
     function downlode_xml($file_name, $data)
     {
         $xml = simplexml_load_file($file_name);

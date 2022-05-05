@@ -1,4 +1,5 @@
 <?php
+    #Arrays
     $emp = array("first_name" , "age" , "gender");
 
     $data = array(

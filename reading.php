@@ -5,11 +5,11 @@
     <body>
         <link rel="stylesheet" type="text/css" href="style.css">
         <?php
+
             include "function.php";
+
             # Task 1
-            # Gets file name from index.php
             $file_name = $_POST["file_name"];
-            # Gets file name extencion
             $part = pathinfo($file_name);
             # Cheks if extencion is csv
             if($part['extension'] == "csv"){
