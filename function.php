@@ -115,15 +115,16 @@
         header('Content-disposition: attachment; filename=downlode.json');
         echo $json;
     }
-    
+
     function downlode_xml($file_name, $data)
     {
-        $xml = simplexml_load_file($file_name);
-        header("Content-Description: File Transfer"); 
+        $xml = file_get_contents($file_name);
+
         header("Content-Type: text/xml"); 
-        header("Content-Disposition: attachment; filename=$file_name"); 
+        header("Content-Disposition: attachment; filename=$file_name");
+        echo "<?xml version='1.0' encoding='utf-8'?>"; 
         
-        echo $xml;
+        print $xml;
     }
 ?>
 
