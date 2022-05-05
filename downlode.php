@@ -1,4 +1,5 @@
 <?php
+    #Task 3
     # Gets file type from index.php
     $file_type = $_POST["type"];
     
