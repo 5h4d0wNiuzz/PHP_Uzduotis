@@ -1,29 +1,9 @@
 <?php
-    # 3 Task
-    # Array
-    $emp = array("first_name" , "age" , "gender");
-
-    $data = array(
-        "0" => array(
-            "first_name" => "Kiestis",
-            "age" => 29,
-            "gender" => "male"
-        ),
-        "1" => array(
-            "first_name" => "Vytska",
-            "age" => 32,
-            "gender" => "male"
-        ),
-        "2" => array(
-            "first_name" => "Karina",
-            "age" => 25,
-            "gender" => "female"
-        ),
-    );
     # Gets file type from index.php
     $file_type = $_POST["type"];
     # Tests if file type is csv
     include "function.php";
+    include "arrays.php";
     if($file_type == "csv"){
         # Downlodes csv file
         $file_name = "downlode.csv";

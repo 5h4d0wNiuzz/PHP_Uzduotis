@@ -1,32 +1,11 @@
-
 <?php
-    # Task 2
-    # Array
-    $emp = array("first_name" , "age" , "gender");
-
-    $data = array(
-        "0" => array(
-            "first_name" => "Kiestis",
-            "age" => 29,
-            "gender" => "male"
-        ),
-        "1" => array(
-            "first_name" => "Vytska",
-            "age" => 32,
-            "gender" => "male"
-        ),
-        "2" => array(
-            "first_name" => "Karina",
-            "age" => 25,
-            "gender" => "female"
-        ),
-    );
     # Gets file name from index.php
     $file_name = $_POST["file_name"];
     # Gets file name extencion
     $part = pathinfo($file_name);
     # Cheks if extencion is csv
     include "function.php";
+    include "arrays.php";
     if($part['extension'] == "csv"){
         # Opens file and puts content from array
         writing_csv($file_name, $emp, $data);
