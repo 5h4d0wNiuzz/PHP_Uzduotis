@@ -1,11 +1,17 @@
 <?php
     #Task 3
-    # Gets file type from index.php
+    /**
+     *Gets file type from index.php
+     * 
+     */
     $fileType = $_POST["type"];
     
     include "function.php";
     include "arrays.php";
-    
+    /**
+     * Cheks file extencion and if it's known runs coresponding writing function and then downlode funcion,
+     * if file couldn't be found echo "File not found";
+     */
     # Tests if file type is csv
     if($fileType == "csv"){
         $fileName = "downlode.csv";

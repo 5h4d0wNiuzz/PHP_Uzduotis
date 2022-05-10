@@ -1,6 +1,8 @@
 <?php
+    /**
+     * Test Function
+     */
     
-    #Test Function
     function foo()
     {
         echo "Its working";
@@ -9,7 +11,11 @@
         error_reporting(E_ALL);
     }
 
-    #Functions for reading files
+    /**
+     * Functions for reading files
+     * 
+     * Takes given file name if it exists opens it
+     */
     function readingCsv($fileName)
     {
         # Opens selected file ir read only
@@ -48,8 +54,12 @@
             echo $per->gender . "<br>";
         }
     }
-
-    #Functions for writing files
+    
+    /**
+     *Functions for writing files
+     *
+     * Takes given name if it exists opens it if doesn't creates it
+     */
     function writingCsv($fileName, $emp, $data)
     {
         $file = fopen($fileName, "w");
@@ -91,8 +101,12 @@
         $xml->save($fileName);
     }
 
-    #Functions for downloding files
-    function downlodeCsv($fileName)
+    /**
+     *#Functions for downloding files
+     *
+     * setups download through headers
+     */
+     function downlodeCsv($fileName)
     {
         header('Content-Description: File Transfer');
         header("Content-type: application/csv");

@@ -9,6 +9,12 @@
             include "function.php";
 
             # Task 1
+            /**
+             * Gets file name from index.php
+             * Cheks file extencion and if it's known runs coresponding reading function,
+             * if file extenchen isn't known echo "Check file name";
+             * if file couldn't be found echo "File not found";
+             */
             $fileName = $_POST["file_name"];
             $part = pathinfo($fileName);
             # Cheks if extencion is csv

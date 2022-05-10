@@ -1,12 +1,19 @@
 <?php
     #Task 2
-    # Gets file name from index.php
+    /**
+     * Gets file name from index.php
+     */
+    
     $fileName = $_POST["file_name"];
     $part = pathinfo($fileName);
     
     include "function.php";
     include "arrays.php";
-
+    /**
+     * Cheks file extencion and if it's known runs coresponding writing function and then reading,
+     * if file extenchen isn't known echo "Check file name";
+     * if file couldn't be found echo "File not found";
+     */
     # Cheks if extencion is csv
     if($part['extension'] == "csv"){
         writingCsv($fileName, $emp, $data);
