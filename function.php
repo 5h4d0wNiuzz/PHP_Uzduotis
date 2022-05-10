@@ -10,22 +10,22 @@
     }
 
     #Functions for reading files
-    function reading_csv($file_name)
+    function readingCsv($fileName)
     {
         # Opens selected file ir read only
-        $file = fopen($file_name, "r");
+        $file = fopen($fileName, "r");
         # Displays it's content
-        while (list($first_name, $age, $gender) = fgetcsv($file, 1024, ',')) {
-            printf("<p>%s , %s , %s</p>", $first_name, $age, $gender);
+        while (list($firstName, $age, $gender) = fgetcsv($file, 1024, ',')) {
+            printf("<p>%s , %s , %s</p>", $firstName, $age, $gender);
         }
         # Closes file
         fclose($file);
     }
 
-    function reading_json($file_name)
+    function readingJson($fileName)
     {
         # Gets file content
-        $file = file_get_contents($file_name);
+        $file = file_get_contents($fileName);
         # Decodes file
         $decode = json_decode($file, true);
         # Displays it's content
@@ -37,10 +37,10 @@
         }
     }   
     
-    function reading_xml($file_name)
+    function readingXml($fileName)
     {
         # Lodes file
-        $file = simplexml_load_file($file_name) or die("Failed to load");
+        $file = simplexml_load_file($fileName) or die("Failed to load");
         # # Displays it's content
         foreach ($file->children() as $per) {
             echo $per->first_name . ", ";
@@ -50,19 +50,19 @@
     }
 
     #Functions for writing files
-    function writing_csv($file_name, $emp, $data)
+    function writingCsv($fileName, $emp, $data)
     {
-        $file = fopen($file_name, "w");
+        $file = fopen($fileName, "w");
         fputcsv($file, $emp);
         foreach($data as $fields){
             fputcsv($file, $fields);
         }
     }
 
-    function writing_json($file_name, $data)
+    function writingJson($fileName, $data)
     {
         $json = json_encode(array("data" => $data));
-        if(file_put_contents($file_name, $json)){
+        if(file_put_contents($fileName, $json)){
             echo "JSON file created succssesfully...<br>";
             echo $json;
         }else{
@@ -71,7 +71,7 @@
 
     }
 
-    function writing_xml($file_name, $data)
+    function writingXml($fileName, $data)
     {
         $xml = new DOMDocument();
         
@@ -88,27 +88,27 @@
 
         $xml->formatOutput = true;
 
-        $xml->save($file_name);
+        $xml->save($fileName);
     }
 
     #Functions for downloding files
-    function downlode_csv($file_name)
+    function downlodeCsv($fileName)
     {
         header('Content-Description: File Transfer');
         header("Content-type: application/csv");
-        header("Content-Disposition: attachment; filename=".basename($file_name));
+        header("Content-Disposition: attachment; filename=".basename($fileName));
         header("Content-Transfer-Encoding: UTF-8");
         header('Expires: 0');
         header('Cache-Control: must-revalidate');
         header('Pragma: public');
-        header('Content-Length: ' . filesize($file_name));
+        header('Content-Length: ' . filesize($fileName));
         ob_clean();
         flush();
 
-        readfile($file_name);
+        readfile($fileName);
     }
 
-    function downlode_json($data)
+    function downlodeJson($data)
     {
         $json = json_encode($data);
         header('Content-type: application/json');
@@ -116,13 +116,13 @@
         echo $json;
     }
 
-    function downlode_xml($file_name, $data)
+    function downlodeXml($fileName, $data)
     {
-        $xml = file_get_contents($file_name);
+        $xml = file_get_contents($fileName);
 
         header("Content-Type: text/xml"); 
-        header("Content-Disposition: attachment; filename=".basename($file_name));
-        header('Content-Length: ' . filesize($file_name));
+        header("Content-Disposition: attachment; filename=".basename($fileName));
+        header('Content-Length: ' . filesize($fileName));
         echo "<?xml version='1.0' encoding='utf-8'?>"; 
         
         print $xml;

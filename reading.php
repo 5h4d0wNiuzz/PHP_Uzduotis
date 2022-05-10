@@ -9,19 +9,19 @@
             include "function.php";
 
             # Task 1
-            $file_name = $_POST["file_name"];
-            $part = pathinfo($file_name);
+            $fileName = $_POST["file_name"];
+            $part = pathinfo($fileName);
             # Cheks if extencion is csv
             if($part['extension'] == "csv"){
-                reading_csv($file_name);
+                readingCsv($fileName);
             }
             #Cheks if extencion is json
             elseif ($part['extension'] == "json"){
-                reading_json($file_name);
+                readingJson($fileName);
             }
             #Cheks if extencion is xml
             elseif ($part['extension'] == "xml"){
-                reading_xml($file_name);
+                readingXml($fileName);
             }
             # Cheks if File name doesn't contais extension
             elseif($part['extension'] == null){
