@@ -20,6 +20,8 @@
             # Cheks if extencion is csv
             if($part['extension'] == "csv"){
                 readingCsv($fileName);
+                echo "\n";
+                print_r(tabToArray($fileName));
             }
             #Cheks if extencion is json
             elseif ($part['extension'] == "json"){

@@ -11,6 +11,43 @@
         error_reporting(E_ALL);
     }
 
+    function tabToArray($src='', $delimiter=',', $is_file = true)
+    {
+        if($is_file && (!file_exists($src) || !is_readable($src)))
+            return FALSE;
+    
+        $header = NULL;
+        $data = array();
+    
+        if($is_file){
+            if (($handle = fopen($src, 'r')) !== FALSE)
+            {
+                while (($row = fgetcsv($handle, 1000, $delimiter)) !== FALSE)
+                {
+                    if(!$header)
+                        $header = $row;
+                    else
+                        $data[] = array_combine($header, $row);
+                }
+                fclose($handle);
+            }
+        }
+        else{
+            $strArr = explode("\n",$src);
+            foreach($strArr as $dataRow){
+                if($row = explode($delimiter,$dataRow))
+                {
+                    if(!$header)
+                        $header = $row;
+                    else
+                        $data[] = array_combine($header, $row);
+                }
+            }
+        }
+    
+        return $data;
+    }
+
     /**
      * Functions for reading files
      * 
@@ -41,6 +78,11 @@
                 echo $v . " ";
             }
         }
+        echo '<br>';
+        $filedata = file_get_contents($fileName);
+        $details = json_decode($filedata);
+        print_r($details);
+
     }   
     
     function readingXml($fileName)
@@ -53,6 +95,10 @@
             echo $per->age . ", ";
             echo $per->gender . "<br>";
         }
+        echo '<br>';
+        $encode = json_encode($file);
+        $newArr = json_decode($encode, true);
+        print_r($newArr);
     }
     
     /**
