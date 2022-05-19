@@ -55,14 +55,26 @@
      */
     function readingCsv($fileName)
     {
+        $arrTest = array();
+        echo foo();
+        echo '<br>';
         # Opens selected file ir read only
         $file = fopen($fileName, "r");
         # Displays it's content
         while (list($firstName, $age, $gender) = fgetcsv($file, 1024, ',')) {
             printf("<p>%s , %s , %s</p>", $firstName, $age, $gender);
+            $ang = [$age => $gender];
+            $arrTest += [$firstName => $ang ];
         }
         # Closes file
         fclose($file);
+        $encode = json_encode($file);
+        $newArr = json_decode($encode, true);
+        ##print_r($newArr);
+        echo '<br>';
+        print_r($arrTest);
+        
+        
     }
 
     function readingJson($fileName)
@@ -96,9 +108,23 @@
             echo $per->gender . "<br>";
         }
         echo '<br>';
+        $a = array(
+            array('a' => 'a0', 'b' => 'b0', 'c' => 'c0'),
+            array('a' => 'a1', 'b' => 'b1', 'c' => 'c1'),
+            array('a' => 'a2', 'b' => 'b2', 'c' => 'c2'),
+            );
+        print_r($a);
+        echo '<br>';
+        print_r(array_combine(array_column($a, 'a'), $a));
+        echo '<br>';
+        echo foo();
+        echo '<br>';
         $encode = json_encode($file);
         $newArr = json_decode($encode, true);
         print_r($newArr);
+        print_r(array_combine(array_column($newArr, 'first_name'), $newArr, 'age', 'geder'));
+        echo "hi <br>";
+        
     }
     
     /**
