@@ -5,8 +5,13 @@
     <body>
         <link rel="stylesheet" type="text/css" href="style.css">
         <?php
+           ini_set('display_errors', 1);
+           ini_set('display_startup_errors', 1);
+           error_reporting(E_ALL);
+           
+            include "bootstrap.php";
+            $readingFun = new readingFun();
 
-            include "function.php";
 
             # Task 1
             /**
