@@ -71,23 +71,6 @@
         $encode = json_encode($file);
         $newArr = json_decode($encode, true);
         print_r($newArr);
-        ##echo '<br>';
-        ##echo '<br>';
-      
-        ##$rows   = array_map('str_getcsv', file($fileName));
-        //Get the first row that is the HEADER row.
-        ##$header_row = array_shift($rows);
-        //This array holds the final response.
-        ##$employee_csv    = array();
-        ##foreach($rows as $row) {
-        ##    if(!empty($row)){
-        ##        $employee_csv[] = array_combine($header_row, $row);
-        ##    }
-        ##}
- 
-        ##print_r($employee_csv);
-
-
         
     }
 

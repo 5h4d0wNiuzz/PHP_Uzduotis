@@ -22,6 +22,7 @@
     # Cheks if extencion is json
     elseif ($part['extension'] == "json"){
         writingJson($fileName, $data);
+        readingJson($fileName);
             }
     # Cheks if extencion is xml
     elseif ($part['extension'] == "xml"){
