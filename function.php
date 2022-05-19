@@ -70,10 +70,24 @@
         fclose($file);
         $encode = json_encode($file);
         $newArr = json_decode($encode, true);
-        ##print_r($newArr);
-        echo '<br>';
-        print_r($arrTest);
-        
+        print_r($newArr);
+        ##echo '<br>';
+        ##echo '<br>';
+      
+        ##$rows   = array_map('str_getcsv', file($fileName));
+        //Get the first row that is the HEADER row.
+        ##$header_row = array_shift($rows);
+        //This array holds the final response.
+        ##$employee_csv    = array();
+        ##foreach($rows as $row) {
+        ##    if(!empty($row)){
+        ##        $employee_csv[] = array_combine($header_row, $row);
+        ##    }
+        ##}
+ 
+        ##print_r($employee_csv);
+
+
         
     }
 
@@ -92,7 +106,7 @@
         }
         echo '<br>';
         $filedata = file_get_contents($fileName);
-        $details = json_decode($filedata);
+        $details = json_decode($filedata, true);
         print_r($details);
 
     }   
@@ -108,23 +122,9 @@
             echo $per->gender . "<br>";
         }
         echo '<br>';
-        $a = array(
-            array('a' => 'a0', 'b' => 'b0', 'c' => 'c0'),
-            array('a' => 'a1', 'b' => 'b1', 'c' => 'c1'),
-            array('a' => 'a2', 'b' => 'b2', 'c' => 'c2'),
-            );
-        print_r($a);
-        echo '<br>';
-        print_r(array_combine(array_column($a, 'a'), $a));
-        echo '<br>';
-        echo foo();
-        echo '<br>';
         $encode = json_encode($file);
         $newArr = json_decode($encode, true);
         print_r($newArr);
-        print_r(array_combine(array_column($newArr, 'first_name'), $newArr, 'age', 'geder'));
-        echo "hi <br>";
-        
     }
     
     /**
