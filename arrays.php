@@ -6,7 +6,7 @@
     $emp = array("first_name" , "age" , "gender");
 
     $data = array(
-        "0" => array(
+           "0" => array(
             "first_name" => "Kiestis",
             "age" => 29,
             "gender" => "male"

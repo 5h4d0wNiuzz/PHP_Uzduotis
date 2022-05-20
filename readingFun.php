@@ -1,9 +1,9 @@
 <?php
     class readingFun {
-        function readingCsv($fileName)
+        public function readingCsv($fileName)
         {
             $arrTest = array();
-            echo foo();
+            #echo foo();
             echo '<br>';
             # Opens selected file ir read only
             $file = fopen($fileName, "r");
@@ -14,14 +14,14 @@
                 $arrTest += [$firstName => $ang ];
             }
             # Closes file
-            fclose($file);
+
             $encode = json_encode($file);
             $newArr = json_decode($encode, true);
             print_r($newArr);
-        
+            fclose($file);
         }
 
-        function readingJson($fileName)
+        public function readingJson($fileName)
         {
             # Gets file content
             $file = file_get_contents($fileName);
@@ -41,7 +41,7 @@
 
         }   
     
-        function readingXml($fileName)
+        public function readingXml($fileName)
         {
             # Lodes file
             $file = simplexml_load_file($fileName) or die("Failed to load");
@@ -55,6 +55,42 @@
             $encode = json_encode($file);
             $newArr = json_decode($encode, true);
             print_r($newArr);
+        }
+        public function tabToArray($src='', $delimiter=',', $is_file = true)
+        {
+        if($is_file && (!file_exists($src) || !is_readable($src)))
+            return FALSE;
+    
+        $header = NULL;
+        $data = array();
+    
+        if($is_file){
+            if (($handle = fopen($src, 'r')) !== FALSE)
+            {
+                while (($row = fgetcsv($handle, 1000, $delimiter)) !== FALSE)
+                {
+                    if(!$header)
+                        $header = $row;
+                    else
+                        $data[] = array_combine($header, $row);
+                }
+                fclose($handle);
+            }
+        }
+        else{
+            $strArr = explode("\n",$src);
+            foreach($strArr as $dataRow){
+                if($row = explode($delimiter,$dataRow))
+                {
+                    if(!$header)
+                        $header = $row;
+                    else
+                        $data[] = array_combine($header, $row);
+                }
+            }
+        }
+    
+        return $data;
         }
     }
 ?>

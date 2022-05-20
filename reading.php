@@ -8,10 +8,10 @@
            ini_set('display_errors', 1);
            ini_set('display_startup_errors', 1);
            error_reporting(E_ALL);
-           
+
+            ##include "function.php";
             include "bootstrap.php";
             $readingFun = new readingFun();
-
 
             # Task 1
             /**
@@ -24,17 +24,18 @@
             $part = pathinfo($fileName);
             # Cheks if extencion is csv
             if($part['extension'] == "csv"){
-                readingCsv($fileName);
+                echo $readingFun->readingCsv($fileName);
                 echo "\n";
-                print_r(tabToArray($fileName));
+                print_r($readingFun->tabToArray($fileName));
+                #print_r(tabToArray($fileName));
             }
             #Cheks if extencion is json
             elseif ($part['extension'] == "json"){
-                readingJson($fileName);
+                echo $readingFun->readingJson($fileName);
             }
             #Cheks if extencion is xml
             elseif ($part['extension'] == "xml"){
-                readingXml($fileName);
+                echo $readingFun->readingXml($fileName);
             }
             # Cheks if File name doesn't contais extension
             elseif($part['extension'] == null){
