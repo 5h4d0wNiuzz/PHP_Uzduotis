@@ -20,6 +20,7 @@
         </div>
       </div>
       <a href="../../contacts/contacts.php">Contacts</a>
+      <a href="../../survey/survey.php">Survey</a>
     </div>
   </body>
 </html>

@@ -15,6 +15,5 @@
         <p> +37061234567 </p>
         <h3> Discord </h3>
         <p> Valentinas (VS)#7307 </p>
-        </form>
     </body>
 </html>
