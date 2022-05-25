@@ -1,3 +1,13 @@
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: blue;
+  color: white;
+  text-align: center;
+}
+
 @media only screen and (min-width: 600px) {
     body {
       background-color: gray;
@@ -8,3 +18,5 @@
       background-color: lightblue;
     }
 }
+
+

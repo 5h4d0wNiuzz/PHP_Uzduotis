@@ -1,14 +1,17 @@
 <?php
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
     #Task 3
     /**
      *Gets file type from index.php
      * 
      */
     $fileType = $_POST["type"];
-    
+
     #include "function.php";
-    include "arrays.php";
-    include "bootstrap.php";
+    include "../../arrays.php";
+    include "../../autoload/bootstrap.php";
     $downloadeFun = new downloadeFun();
     $writingFun = new writingFun();
     /**

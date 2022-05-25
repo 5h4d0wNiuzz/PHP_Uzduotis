@@ -3,14 +3,15 @@
         <title>Reading_form_file</title>
     </head>
     <body>
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="../../css/style.css">
         <?php
            ini_set('display_errors', 1);
            ini_set('display_startup_errors', 1);
            error_reporting(E_ALL);
 
             ##include "function.php";
-            include "bootstrap.php";
+            include "../../nav/nav.php";
+            include "../../autoload/bootstrap.php";
             $readingFun = new readingFun();
 
             # Task 1
@@ -46,5 +47,8 @@
                 echo "File not found";
             }
         ?>
+        <form>
+            <input type="button" value="Go back!" onclick="history.back()">
+        </form>
     </body>
 </html>
