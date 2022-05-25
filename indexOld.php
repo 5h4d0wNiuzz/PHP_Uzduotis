@@ -35,7 +35,7 @@
                 <button type="submit">Select</button>
             </div>          
         </form>
-        <h2>Atgal i pirma</h2>
+        <h2>Cia niekas nebeveikia tik skeletas</h2>
         <form action="index.php">
             <button type="submit" href="index.php">Click Me!</button> 
         </form>
