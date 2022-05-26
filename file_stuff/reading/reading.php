@@ -13,7 +13,7 @@
             include "../../nav/nav.php";
             include "../../nav/footer.php";
             include "../../autoload/bootstrap.php";
-            $readingFun = new readingFun();
+            $reader = new reader();
 
             # Task 1
             /**
@@ -26,18 +26,18 @@
             $part = pathinfo($fileName);
             # Cheks if extencion is csv
             if($part['extension'] == "csv"){
-                echo $readingFun->readingCsv($fileName);
+                echo $reader->readingCsv($fileName);
                 echo "\n";
-                print_r($readingFun->tabToArray($fileName));
+                print_r($reader->tabToArray($fileName));
                 #print_r(tabToArray($fileName));
             }
             #Cheks if extencion is json
             elseif ($part['extension'] == "json"){
-                echo $readingFun->readingJson($fileName);
+                echo $reader->readingJson($fileName);
             }
             #Cheks if extencion is xml
             elseif ($part['extension'] == "xml"){
-                echo $readingFun->readingXml($fileName);
+                echo $reader->readingXml($fileName);
             }
             # Cheks if File name doesn't contais extension
             elseif($part['extension'] == null){

@@ -1,5 +1,5 @@
 <?php
-    class downloadeFun {
+    class downloader {
         function downlodeCsv($fileName)
         {
             header('Content-Description: File Transfer');

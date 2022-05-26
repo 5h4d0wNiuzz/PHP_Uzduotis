@@ -1,5 +1,5 @@
 <?php
-    class readingFun {
+    class reader {
         public function readingCsv($fileName)
         {
             $arrTest = array();
@@ -28,12 +28,12 @@
             # Decodes file
             $decode = json_decode($file, true);
             # Displays it's content
-            foreach ($decode as $key => $value) {
-                echo "<br>";
-                foreach ($value as $v) {
-                    echo $v . " ";
-                }
-            }
+            #foreach ($decode as $key => $value) {
+            #    echo "<br>";
+            #    foreach ($value as $v) {
+            #        echo $v . " ";
+            #    }
+            #}
             echo '<br>';
             $filedata = file_get_contents($fileName);
             $details = json_decode($filedata, true);

@@ -21,8 +21,8 @@
             include "../../nav/footer.php";
             include "../../arrays.php";
             include "../../autoload/bootstrap.php";
-            $readingFun = new readingFun();
-            $writingFun = new writingFun();
+            $reader = new reader();
+            $writer = new writer();
 
             /**
              * Cheks file extencion and if it's known runs coresponding writing function and then reading,
@@ -31,18 +31,19 @@
              */
             # Cheks if extencion is csv
             if($part['extension'] == "csv"){
-                echo $writingFun->writingCsv($fileName, $emp, $data);
-                echo $readingFun->readingCsv($fileName);
+                echo $writer->writingCsv($fileName, $emp, $data);
+                echo $reader->readingCsv($fileName);
+                print_r($reader->tabToArray($fileName));
             }
             # Cheks if extencion is json
             elseif ($part['extension'] == "json"){
-                echo $writingFun->writingJson($fileName, $data);
-                echo $readingFun->readingJson($fileName);
+                echo $writer->writingJson($fileName, $data);
+                echo $reader->readingJson($fileName);
             }
             # Cheks if extencion is xml
             elseif ($part['extension'] == "xml"){
-                echo $writingFun->writingXml($fileName, $data);
-                echo $readingFun->readingXml($fileName);
+                echo $writer->writingXml($fileName, $data);
+                echo $reader->readingXml($fileName);
             }
             # Cheks if File name doesn't contais extension
             elseif($part['extension'] == null){

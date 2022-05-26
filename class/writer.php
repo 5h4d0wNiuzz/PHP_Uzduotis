@@ -1,5 +1,5 @@
 <?php
-    class writingFun {
+    class writer {
         function writingCsv($fileName, $emp, $data)
         {
             $file = fopen($fileName, "w");
