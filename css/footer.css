@@ -1,0 +1,17 @@
+#main{
+    background-color: #dfdfff;
+}
+
+footer{
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: #333;
+}
+
+div.footer {
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+}

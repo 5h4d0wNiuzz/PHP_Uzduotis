@@ -18,6 +18,7 @@
     
             #include "function.php";
             include "../../nav/nav.php";
+            include "../../nav/footer.php";
             include "../../arrays.php";
             include "../../autoload/bootstrap.php";
             $readingFun = new readingFun();

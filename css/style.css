@@ -1,21 +1,14 @@
-.footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: blue;
-  color: white;
-  text-align: center;
-}
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 1000px) {
     body {
       background-color: gray;
+      text-align: center;
     }
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1000px) {
     body {
       background-color: lightblue;
+      text-align: center;
     }
 }
 

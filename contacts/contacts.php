@@ -7,6 +7,7 @@
         <body>
         <?php
             include "../nav/nav.php";
+            include "../nav/footer.php";
         ?>
         
         <h3> Email </h3>

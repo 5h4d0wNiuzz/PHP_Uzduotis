@@ -7,10 +7,11 @@
         <body>
         <?php
             include "nav/nav.php";
+            include "nav/footer.php";
         ?>
-        <h2> 1 Uzduotis </h2>
-        <form action="indexOld.php">
-            I antra puslapi  <button type="submit" href="indexOld.php">Click Me!</button> 
+        <h2> Test for locking nav bar and footer </h2>
+        <form action="test.php">
+            I antra puslapi  <button type="submit" href="test.php">Click Me!</button> 
         </form>
     </body>
 </html>
